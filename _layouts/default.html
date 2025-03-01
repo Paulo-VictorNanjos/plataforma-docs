@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "pt-BR" }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    {% include head-custom.html %}
+</head>
+<body>
+    <div class="sidebar">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Buscar na documentação...">
+            <div id="search-results"></div>
+        </div>
+        <nav class="nav-menu">
+            <h3>📚 Documentação</h3>
+            <ul>
+                <li><a href="{{ site.baseurl }}/">🏠 Início</a></li>
+                <li><a href="{{ site.baseurl }}/docs/frontend">📱 Frontend</a></li>
+                <li><a href="{{ site.baseurl }}/docs/backend">⚙️ Backend</a></li>
+                <li><a href="{{ site.baseurl }}/docs/api-guide">🔌 API</a></li>
+                <li><a href="{{ site.baseurl }}/docs/installation">📥 Instalação</a></li>
+            </ul>
+            <h3>🛠️ Desenvolvimento</h3>
+            <ul>
+                <li><a href="{{ site.baseurl }}/docs/CONTRIBUTING">📝 Como Contribuir</a></li>
+                <li><a href="{{ site.github.repository_url }}/issues">🐛 Reportar Bug</a></li>
+                <li><a href="{{ site.github.repository_url }}/issues">💡 Sugerir Feature</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="main-content">
+        <div class="main-content-wrap">
+            {{ content }}
+        </div>
+    </main>
+
+    <script>
+        // Implementação da busca
+        document.getElementById('search-input').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const resultsDiv = document.getElementById('search-results');
+            
+            if (searchTerm.length < 2) {
+                resultsDiv.innerHTML = '';
+                return;
+            }
+
+            // Busca nos links do menu
+            const links = document.querySelectorAll('.nav-menu a');
+            const results = Array.from(links).filter(link => 
+                link.textContent.toLowerCase().includes(searchTerm)
+            );
+
+            resultsDiv.innerHTML = results.map(link => 
+                `<a href="${link.href}">${link.textContent}</a>`
+            ).join('');
+        });
+    </script>
+</body>
+</html> 
