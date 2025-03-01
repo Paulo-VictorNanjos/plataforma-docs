@@ -1,6 +1,29 @@
 remote_theme: pages-themes/cayman@v0.2.0
 plugins:
 - jekyll-remote-theme
+- jekyll-seo-tag
+
+# Informações do Site
 title: Plataforma de Atendimento e Cursos Online (LMS)
 description: Documentação completa do sistema de gerenciamento de aprendizado
-show_downloads: true 
+show_downloads: true
+
+# Metadata
+version: 1.0.0
+author: Paulo Victor
+repository: Paulo-VictorNanjos/plataforma-docs
+
+# Configurações de Layout
+sidebar: true
+search: true
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  input: GFM
+
+# Links
+github:
+  is_project_page: true
+  repository_url: https://github.com/Paulo-VictorNanjos/plataforma-docs
+  zip_url: https://github.com/Paulo-VictorNanjos/plataforma-docs/archive/main.zip
+  tar_url: https://github.com/Paulo-VictorNanjos/plataforma-docs/archive/main.tar.gz 
