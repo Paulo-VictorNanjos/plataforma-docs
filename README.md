@@ -155,4 +155,4 @@ Para informações mais detalhadas, consulte:
 - [Documentação do Frontend](./docs/frontend.md)
 - [Documentação do Backend](./docs/backend.md)
 - [Guia de API](./docs/api-guide.md)
-- [Guia de Instalação](./docs/installation.md) 
+- [Guia de Instalação](./docs/installation.md)
