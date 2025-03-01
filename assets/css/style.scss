@@ -2,74 +2,126 @@
 
 // Variáveis
 :root {
-    --sidebar-width: 280px;
-    --primary-color: #157878;
-    --secondary-color: #155799;
-    --text-color: #606c71;
+    --sidebar-width: 300px;
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --text-color: #374151;
+    --bg-color: #ffffff;
+    --sidebar-bg: #f8fafc;
+    --hover-color: #eff6ff;
+    --border-color: #e2e8f0;
+    --header-bg: linear-gradient(120deg, #2563eb, #1e40af);
 }
 
-// Layout
+// Reset e Estilos Globais
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     display: flex;
     min-height: 100vh;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: var(--text-color);
+    background: var(--bg-color);
+    line-height: 1.6;
 }
 
-// Sidebar
+// Sidebar Melhorada
 .sidebar {
     width: var(--sidebar-width);
-    background: #f5f5f5;
-    padding: 2rem 1rem;
-    border-right: 1px solid #ddd;
+    background: var(--sidebar-bg);
+    padding: 2rem;
+    border-right: 1px solid var(--border-color);
     position: fixed;
     height: 100vh;
     overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: var(--sidebar-bg);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--border-color);
+        border-radius: 3px;
+    }
 }
 
-// Menu de Navegação
+// Menu de Navegação Aprimorado
 .nav-menu {
     margin-top: 2rem;
 
     h3 {
         color: var(--primary-color);
-        margin-top: 1.5rem;
-        font-size: 1.1rem;
+        margin: 2rem 0 1rem;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
     }
 
     ul {
         list-style: none;
         padding: 0;
-        margin: 1rem 0;
+        margin: 0.5rem 0;
     }
 
     li {
-        margin: 0.5rem 0;
+        margin: 0.25rem 0;
     }
 
     a {
         color: var(--text-color);
         text-decoration: none;
-        display: block;
-        padding: 0.5rem;
-        border-radius: 4px;
-        transition: background 0.2s;
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        font-size: 0.95rem;
 
         &:hover {
-            background: #e9e9e9;
+            background: var(--hover-color);
             color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        // Ícones
+        svg, img {
+            margin-right: 0.75rem;
+            width: 20px;
+            height: 20px;
         }
     }
 }
 
-// Busca
+// Busca Aprimorada
 .search-container {
     position: relative;
+    margin-bottom: 2rem;
 
     input {
         width: 100%;
-        padding: 0.5rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-size: 0.9rem;
+        padding: 0.75rem 1rem;
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        font-size: 0.95rem;
+        transition: all 0.2s ease;
+        background: var(--bg-color);
+
+        &:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
     }
 
     #search-results {
@@ -77,22 +129,25 @@ body {
         top: 100%;
         left: 0;
         right: 0;
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 4px;
+        background: var(--bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
         margin-top: 0.5rem;
         max-height: 300px;
         overflow-y: auto;
         z-index: 1000;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 
         a {
             display: block;
-            padding: 0.5rem;
+            padding: 0.75rem 1rem;
             color: var(--text-color);
             text-decoration: none;
+            transition: background 0.2s;
 
             &:hover {
-                background: #f5f5f5;
+                background: var(--hover-color);
+                color: var(--primary-color);
             }
         }
     }
@@ -101,11 +156,106 @@ body {
 // Conteúdo Principal
 .main-content {
     margin-left: var(--sidebar-width);
-    padding: 2rem;
+    padding: 3rem;
     width: calc(100% - var(--sidebar-width));
+    max-width: 1200px;
+
+    h1 {
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    h2 {
+        color: var(--secondary-color);
+        margin: 2rem 0 1rem;
+        font-size: 1.75rem;
+        font-weight: 600;
+    }
+
+    h3 {
+        color: var(--text-color);
+        margin: 1.5rem 0 1rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
+    p {
+        margin-bottom: 1.5rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+
+    code {
+        background: var(--hover-color);
+        padding: 0.2em 0.4em;
+        border-radius: 4px;
+        font-size: 0.9em;
+        color: var(--primary-color);
+    }
+
+    pre {
+        background: #1a1a1a;
+        color: #fff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+    }
+
+    img {
+        max-width: 100%;
+        border-radius: 8px;
+        margin: 1.5rem 0;
+    }
 }
 
-// Responsivo
+// Badges e Links
+.badges {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+
+    img {
+        margin: 0;
+    }
+}
+
+// Cards para Features
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+
+    .feature-card {
+        background: var(--bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            margin-top: 0;
+        }
+    }
+}
+
+// Responsivo Aprimorado
+@media screen and (max-width: 1024px) {
+    :root {
+        --sidebar-width: 250px;
+    }
+}
+
 @media screen and (max-width: 768px) {
     body {
         flex-direction: column;
@@ -116,11 +266,17 @@ body {
         height: auto;
         position: relative;
         border-right: none;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem;
     }
 
     .main-content {
         margin-left: 0;
         width: 100%;
+        padding: 1.5rem;
+    }
+
+    .nav-menu a:hover {
+        transform: none;
     }
 } 
